@@ -20,7 +20,7 @@ def total_matches(data):
 
     # Creamos el dataframe para mostrar los equipos y el número de partidos. Con .index mostramos el nombre de
     # los equipos y con .values vemos los valores
-    matches_team_total = pd.DataFrame({"Equipo": matches_team_total.index, "Número de partidos": matches_team_total.values,})
+    matches_team_total = pd.DataFrame({"Equipo": matches_team_total.index, "Número de partidos": matches_team_total.values})
 
     return matches_team_total
 

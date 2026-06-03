@@ -1,6 +1,7 @@
 from ex1 import load_and_eda, plot_home_away_goals
 from ex2 import plot_matches_team_total, total_matches
 from ex3 import goals_distribution, plot_goals_distribution
+from ex4 import FTR, plot_FTR
 
 # Ejecución de las funciones del ejercicio 1
 print("A continuación se muestran las primeras y utimas filas del dasat y las estadisticas basicas")
@@ -36,3 +37,9 @@ print(distr_goals_away)
 
 
 #plot_goals_distribution(distr_goals_home, distr_goals_away)
+
+# Ejecución de las funciones del ejercicio 4
+ftr = FTR(data)
+print(ftr)
+
+plot_FTR(ftr)
