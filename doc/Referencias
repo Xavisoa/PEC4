@@ -14,3 +14,12 @@ Referencias:
 - https://pandas.pydata.org/docs/reference/api/pandas.Series.to_frame.html
 - https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot
 - https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xticks.html
+- https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html
+- https://saturncloud.io/blog/how-to-use-pandas-loc-with-multiple-conditions/
+- https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html
+- https://www.ionos.com/digitalguide/websites/web-development/python-pandas-dataframe-groupby/
+- https://pandas.pydata.org/docs/reference/api/pandas.concat.html
+- https://www.youtube.com/watch?v=qT-RJfVCBfI
+- https://madi.nekomath.com/P5/NetworkX.html
+- https://networkx.org/documentation/stable/tutorial.html
+- https://networkx.org/documentation/stable/reference/generated/networkx.drawing.layout.spring_layout.html
