@@ -1,10 +1,13 @@
+"""Funciones del ejercicio 1."""
+
 import matplotlib.pyplot as plt
 import pandas as pd
-import config
+
+from src import config
 
 
 def load_and_eda(file):
-    """Se cargan los datos del DataFrame, se limpian y se realiza un primer análisis."""
+    """Se cargan los datos del DataFrame, se limpian y se realiza un primer anÃ¡lisis."""
     data = pd.read_csv(file)
     data = data.drop(columns=["HTHG", "HTAG", "HTR"])
     print("Primeras filas")
@@ -23,6 +26,6 @@ def plot_home_away_goals(data):
     plt.figure(figsize=(8, 5))
     plt.boxplot([data["FTHG"], data["FTAG"]])
     plt.xticks([1, 2], ["Goles casa", "Goles fuera"])
-    plt.title("Distribución de goles")
+    plt.title("DistribuciÃ³n de goles")
     plt.ylabel("Goles")
-    plt.savefig(f"img/grafica_ex1_{config.nom_alumne}_{config.date_time}.png")
+    plt.savefig(f"src/img/grafica_ex1_{config.nom_alumne}_{config.date_time}.png")

@@ -2,6 +2,7 @@ Referencias:
 
 - Unidad 2
 - Unidad 4
+- Unidad 6
 - https://aprendeconalf.es/docencia/python/manual/pandas/
 - https://aprendeconalf.es/docencia/python/manual/matplotlib/
 - https://www.datacamp.com/es/tutorial/python-boxplots
@@ -23,3 +24,8 @@ Referencias:
 - https://madi.nekomath.com/P5/NetworkX.html
 - https://networkx.org/documentation/stable/tutorial.html
 - https://networkx.org/documentation/stable/reference/generated/networkx.drawing.layout.spring_layout.html
+- https://docs.python.org/es/3/library/argparse.html
+- https://akaj4ndr0.github.io/pythonI-argparse/#
+- https://pylint.readthedocs.io/en/stable/
+- https://lacodeteca.com/python/pylint/
+- https://github.com/kubeflow/examples/blob/master/.pylintrc

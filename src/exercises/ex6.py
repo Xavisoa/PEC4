@@ -1,7 +1,9 @@
+"""Funciones del ejercicio 6."""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
-import config
+from src import config
 
 def fun_total_goals(data):
     ''' Devuelve el total de goles locales, visitantes y totales '''
@@ -38,10 +40,10 @@ def fun_total_goals_by_team(data):
 
 
 def fun_summary_1996_2025(total_points_by_team, home_goals_by_team, away_goals_by_team, total_goals_by_team):
-    ''' Une toda la información de puntos, goles locales, goles visitantes y goles totales en un único DataFrame '''
+    ''' Une toda la informaciÃ³n de puntos, goles locales, goles visitantes y goles totales en un Ãºnico DataFrame '''
 
     # Concatenamos los cuatro DataFrames y con axis = 1 indicamos que los DataFrames se unen por columnas utilizando
-    # el índice (Equipo)
+    # el Ã­ndice (Equipo)
     summary_1996_2025 = pd.concat([total_points_by_team.set_index("Equipo"), home_goals_by_team,
             away_goals_by_team, total_goals_by_team], axis=1)
 
@@ -70,6 +72,6 @@ def podium(summary_1996_2025):
     plt.text(1, 3, equipos[1], ha="center")
     plt.text(2, 1, equipos[2], ha="center")
 
-    plt.title("Podio histórico")
+    plt.title("Podio histÃ³rico")
 
-    plt.savefig(f"img/podium_{config.nom_alumne}_{config.date_time}.png")
+    plt.savefig(f"src/img/podium_{config.nom_alumne}_{config.date_time}.png")

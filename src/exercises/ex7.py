@@ -1,7 +1,9 @@
+"""Funciones del ejercicio 7."""
+
 import networkx as nx
 import matplotlib.pyplot as plt
 
-import config
+from src import config
 
 def graf(data, selected_teams):
     ''' Crea un grafo con los enfrentamientos entre los 5 equipos seleccionados '''
@@ -11,18 +13,18 @@ def graf(data, selected_teams):
     data_filtered = data[data["HomeTeam"].isin(selected_teams) & data["AwayTeam"].isin(selected_teams)]
 
     # Agrupamos por pareja de equipos (local y visitante)
-    # y contamos cuántos partidos hay de cada combinación
+    # y contamos cuÃ¡ntos partidos hay de cada combinaciÃ³n
     matches = (data_filtered.groupby(["HomeTeam", "AwayTeam"]).size().reset_index(name="Partidos"))
 
-    # Creamos un grafo vacío utilizando la librería networkx
-    G = nx.Graph()
+    # Creamos un grafo vacÃ­o utilizando la librerÃ­a networkx
+    graph = nx.Graph()
 
-    # Añadimos cada equipo como un nodo del grafo
+    # AÃ±adimos cada equipo como un nodo del grafo
     for team in selected_teams:
-        G.add_node(team)
+        graph.add_node(team)
 
     # Recorremos todos los enfrentamientos encontrados
-    for i, row in matches.iterrows():
+    for _, row in matches.iterrows():
 
         # Guardamos el nombre del equipo local
         home = row["HomeTeam"]
@@ -30,34 +32,34 @@ def graf(data, selected_teams):
         # Guardamos el nombre del equipo visitante
         away = row["AwayTeam"]
 
-        # Guardamos el número de partidos disputados
+        # Guardamos el nÃºmero de partidos disputados
         partidos = row["Partidos"]
 
-        # Si ya existe una conexión entre ambos equipos sumamos los partidos a la conexión existente
-        if G.has_edge(home, away):
-            G[home][away]["weight"] += partidos
+        # Si ya existe una conexiÃ³n entre ambos equipos sumamos los partidos a la conexiÃ³n existente
+        if graph.has_edge(home, away):
+            graph[home][away]["weight"] += partidos
 
-        # Si no existe la conexión la creamos y guardamos el número de partidos como peso de la conexión
+        # Si no existe la conexiÃ³n la creamos y guardamos el nÃºmero de partidos como peso de la conexiÃ³n
         else:
-            G.add_edge(home, away, weight=partidos)
+            graph.add_edge(home, away, weight=partidos)
 
     plt.figure(figsize=(10, 8))
 
-    # Calculamos automáticamente la posición de cada nodo
+    # Calculamos automÃ¡ticamente la posiciÃ³n de cada nodo
     # spring_layout distribuye los nodos intentando que no se solapen
-    layout = nx.spring_layout(G)
+    layout = nx.spring_layout(graph)
 
     # Dibujamos el grafo
-    nx.draw(G, layout, with_labels=True, node_size=3000)
+    nx.draw(graph, layout, with_labels=True, node_size=3000)
 
-    # Obtenemos el peso de cada conexión (número de partidos)
-    labels = nx.get_edge_attributes(G, "weight")
+    # Obtenemos el peso de cada conexiÃ³n (nÃºmero de partidos)
+    labels = nx.get_edge_attributes(graph, "weight")
 
-    # Dibujamos sobre cada línea el número de enfrentamientos
-    nx.draw_networkx_edge_labels(G, layout, edge_labels=labels)
+    # Dibujamos sobre cada lÃ­nea el nÃºmero de enfrentamientos
+    nx.draw_networkx_edge_labels(graph, layout, edge_labels=labels)
 
-    # Añadimos un título al gráfico
+    # AÃ±adimos un tÃ­tulo al grÃ¡fico
     plt.title("Enfrentamientos entre los 5 mejores equipos")
 
     # Guardamos la imagen generada
-    plt.savefig(f"img/grafo_{config.nom_alumne}_{config.date_time}.png")
+    plt.savefig(f"src/img/grafo_{config.nom_alumne}_{config.date_time}.png")
