@@ -103,7 +103,7 @@ git commit -m "Primer commit PEC4"
 Para subirlo a GitHub:
 
 ```bash
-git remote add origin URL_DEL_REPOSITORIO
+git remote add origin https://github.com/Xavisoa/PEC4
 git branch -M main
 git push -u origin main
 ```
