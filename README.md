@@ -6,7 +6,7 @@ Autor: Xavier Soler Alonso
 
 La estructura del proyecto es:
 
-En la carpeta `src/exercises/` están las funciones de cada ejercicio.
+En la carpeta `src/exercises/` estan las funciones de cada ejercicio.
 
 El archivo `src/main.py` es el que ejecuta los ejercicios.
 
@@ -18,6 +18,12 @@ Primero se puede crear un entorno virtual:
 
 ```bash
 python -m venv .venv
+```
+
+En Windows se activa asi:
+
+```bash
+.venv\Scripts\activate
 ```
 
 Despues se instalan las librerias necesarias:
@@ -77,16 +83,17 @@ El test del ejercicio 6 se ejecuta con:
 python -m unittest tests.tests_ex6
 ```
 
-Este test comprueba la función `fun_total_goals`.
+Este test comprueba la funcion `fun_total_goals`.
 
-## requitements.txt
+## requirements.txt
 
-Librerias necesarias para la ejecución del proyecto:
+Librerias necesarias para la ejecucion del proyecto:
+
 - pandas
 - matplotlib
 - networkx
 
-## LICENCE
+## LICENSE
 
 Este proyecto se distribuye bajo la licencia MIT.
 
@@ -103,7 +110,7 @@ git commit -m "Primer commit PEC4"
 Para subirlo a GitHub:
 
 ```bash
-git remote add origin https://github.com/Xavisoa/PEC4
+git remote add origin https://github.com/Xavisoa/PEC4.git
 git branch -M main
 git push -u origin main
 ```
