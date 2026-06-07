@@ -1,4 +1,3 @@
-
 """Funciones del ejercicio 2."""
 
 import matplotlib.pyplot as plt
@@ -8,37 +7,42 @@ from src import config
 
 
 def total_matches(data):
-    ''' Devuelve un dataframe con el nÃºmero total de partidos jugados por cada equipo '''
-
-    # Cuenta cuÃ¡ntos partidos ha jugado cada equipo como local con value_counts()
+    """Devuelve un DataFrame con el numero total de partidos jugados por cada equipo."""
+    # Cuenta cuantos partidos ha jugado cada equipo como local
     home_matches = data["HomeTeam"].value_counts()
-    # Cuenta cuÃ¡ntos partidos ha jugado cada equipo como visitante con value_counts()
+
+    # Cuenta cuantos partidos ha jugado cada equipo como visitante
     away_matches = data["AwayTeam"].value_counts()
 
-    # Suma los partidos como local y visitante para obtener el total
+    # Sumamos los partidos como local y visitante
     matches_team_total = home_matches.add(away_matches, fill_value=0)
-    # Ordena los equipos con mayor numero de partidos a menos
+
+    # Ordenamos los equipos de mayor a menor numero de partidos
     matches_team_total = matches_team_total.sort_values(ascending=False)
 
-    # Creamos el dataframe para mostrar los equipos y el nÃºmero de partidos. Con .index mostramos el nombre de
-    # los equipos y con .values vemos los valores
+    # Creamos un DataFrame con el nombre del equipo y el total de partidos
     matches_team_total = pd.DataFrame({
         "Equipo": matches_team_total.index,
-        "NÃºmero de partidos": matches_team_total.values,
+        "Numero de partidos": matches_team_total.values,
     })
 
     return matches_team_total
 
-# Para la creaciÃ³n de este grafico se utiliza un grafico de barras
+
 def plot_matches_team_total(matches_team_total):
-    ''' Crea un grafico de barras con la relaciÃ³n de equipos y partidos jugados '''
+    """Crea un grafico de barras con la relacion de equipos y partidos jugados."""
+    # Creamos la figura del grafico
     plt.figure(figsize=(14, 6))
-    # Utilizamos los datos creados con la funcion de total_matches
-    plt.bar(matches_team_total["Equipo"], matches_team_total["NÃºmero de partidos"])
+
+    # Creamos el grafico de barras con los equipos y sus partidos totales
+    plt.bar(matches_team_total["Equipo"], matches_team_total["Numero de partidos"])
     plt.title("Partidos totales por equipo")
     plt.xlabel("Equipo")
-    plt.ylabel("NÃºmero de partidos total")
-    # Se rotan los nombres para que se puedan ver bien ene grafico
+    plt.ylabel("Numero de partidos total")
+
+    # Rotamos los nombres de los equipos para que se puedan leer mejor
     plt.xticks(rotation=90)
     plt.tight_layout()
+
+    # Guardamos la grafica en la carpeta img
     plt.savefig(f"src/img/grafica_ex2_{config.nom_alumne}_{config.date_time}.png")

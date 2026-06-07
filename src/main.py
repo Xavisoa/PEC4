@@ -10,13 +10,12 @@ from src.exercises.ex5 import add_points, fun_total_points, alltime_winner
 from src.exercises.ex6 import fun_total_goals, fun_total_goals_by_team, fun_summary_1996_2025, podium
 from src.exercises.ex7 import graf
 
-
 def parse_args():
     """Lee los argumentos indicados por terminal."""
     # Creamos un objeto ArgumentParser para gestionar los argumentos
     # que el usuario puede introducir al ejecutar el programa
     parser = argparse.ArgumentParser(description="PEC4 - Analisis de resultados historicos de La Liga")
-    # AÃ±adimos el argumento -ex para indicar hasta quÃ© ejercicio se ejecutarÃ¡
+    # Añadimos el argumento -ex para indicar hasta que ejercicio se ejecuta
     parser.add_argument(
         "-ex",
         # Convertimos el valor introducido a entero
@@ -25,7 +24,7 @@ def parse_args():
         default=7,
         # Solo se permiten valores entre 1 y 7
         choices=range(1, 8),
-        # Texto que aparecerÃ¡ cuando el usuario ejecute python main.py -h
+        # Texto que aparece cuando el usuario ejecute python main.py -h
         help="Ejecuta los ejercicios de forma incremental, de 1 a 7",
     )
     return parser.parse_args()
@@ -42,8 +41,8 @@ if args.ex >= 2:
     print("\nA continuacion se muestran los 10 equipos con mas partidos jugados")
     print(matches_team_total.head(10))
 
-    max_matches = matches_team_total["NÃºmero de partidos"].max()
-    equipos_primera = matches_team_total[matches_team_total["NÃºmero de partidos"] == max_matches]["Equipo"].tolist()
+    max_matches = matches_team_total["Numero de partidos"].max()
+    equipos_primera = matches_team_total[matches_team_total["Numero de partidos"] == max_matches]["Equipo"].tolist()
     print("Los equipos que siempre han estado en primera son:", equipos_primera)
 
     plot_matches_team_total(matches_team_total)

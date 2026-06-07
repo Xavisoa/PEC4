@@ -4,29 +4,47 @@ import matplotlib.pyplot as plt
 
 from src import config
 
-def goals_distribution(data):
-    ''' Devuelve la distribuciÃ³n de goles marcados por equipos locales y visitantes. '''
 
-    # Cuenta cuÃ¡ntos partidos tienen cada nÃºmero de goles locales y los ordena de forma ascendente
+def goals_distribution(data):
+    """Devuelve la distribucion de goles marcados por locales y visitantes."""
+    # Cuenta cuantos partidos tienen cada numero de goles locales
     distr_goals_home = data["FTHG"].value_counts().sort_index()
 
-    # Cuenta cuÃ¡ntos partidos tienen cada nÃºmero de goles visitantes y los ordena de forma ascendente
+    # Cuenta cuantos partidos tienen cada numero de goles visitantes
     distr_goals_away = data["FTAG"].value_counts().sort_index()
 
-    # Convierte las series en DataFrames
-    distr_goals_home = distr_goals_home.to_frame(name="DistribuciÃ³n de goles local")
-    distr_goals_away = distr_goals_away.to_frame(name="DistribuciÃ³n de goles visitante")
+    # Convertimos las series en DataFrames y damos nombre a las columnas
+    distr_goals_home = distr_goals_home.to_frame(name="Distribucion de goles local")
+    distr_goals_away = distr_goals_away.to_frame(name="Distribucion de goles visitante")
 
     return distr_goals_home, distr_goals_away
 
+
 def plot_goals_distribution(distr_goals_home, distr_goals_away):
-    ''' Representa la distribuciÃ³n de goles de locales y visitantes '''
+    """Representa la distribucion de goles de locales y visitantes."""
+    # Creamos la figura del grafico
     plt.figure(figsize=(10, 6))
-    plt.plot(distr_goals_home.index,distr_goals_home["DistribuciÃ³n de goles local"],label="Goles locales")
-    plt.plot(distr_goals_away.index,distr_goals_away["DistribuciÃ³n de goles visitante"],label="Goles visitantes")
-    plt.title("DistribuciÃ³n de goles")
-    plt.xlabel("NÃºmero de goles")
-    plt.ylabel("NÃºmero de partidos")
+
+    # Dibujamos la distribucion de goles de los equipos locales
+    plt.plot(
+        distr_goals_home.index,
+        distr_goals_home["Distribucion de goles local"],
+        label="Goles locales",
+    )
+
+    # Dibujamos la distribucion de goles de los equipos visitantes
+    plt.plot(
+        distr_goals_away.index,
+        distr_goals_away["Distribucion de goles visitante"],
+        label="Goles visitantes",
+    )
+
+    # Anadimos titulo, etiquetas y leyenda
+    plt.title("Distribucion de goles")
+    plt.xlabel("Numero de goles")
+    plt.ylabel("Numero de partidos")
     plt.xticks(range(0, 11))
     plt.legend()
+
+    # Guardamos la grafica en la carpeta img
     plt.savefig(f"src/img/grafica_ex3_{config.nom_alumne}_{config.date_time}.png")
