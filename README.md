@@ -104,13 +104,12 @@ Comandos basicos para guardar el proyecto con Git:
 ```bash
 git init
 git add .
-git commit -m "Primer commit PEC4"
+git commit -m "first commit PEC4"
 ```
 
 Para subirlo a GitHub:
 
 ```bash
 git remote add origin https://github.com/Xavisoa/PEC4.git
-git branch -M main
 git push -u origin main
 ```
